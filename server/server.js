@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const signUpRouter = require('./routes/signUpRouter');
 
 ///"start": "NODE_ENV=production node server/server.js",
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
 });
 
+app.use('/signup', signUpRouter);
 
 
 ///////////////// ERROR HANDLERS
