@@ -2,8 +2,30 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const rp = require('request-promise');
 
 ///"start": "NODE_ENV=production node server/server.js",
+
+const requestOptions = {
+  method: 'GET',
+  uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
+  qs: {
+    'start': '1',
+    'limit': '5000',
+    'convert': 'USD'
+  },
+  headers: {
+    'X-CMC_PRO_API_KEY': 'e631f17e-ce07-4c1e-bc28-05a06d783d11'
+  },
+  json: true,
+  gzip: true
+};
+
+rp(requestOptions).then(response => {
+  console.log('API call response:', response);
+}).catch((err) => {
+  console.log('API call error:', err.message);
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
