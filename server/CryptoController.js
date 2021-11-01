@@ -1,5 +1,21 @@
 const rp = require('request-promise');
 
+const CryptoController = {};
+
+CryptoController.getAllData = (req, res, err) => {
+  try {
+    rp(requestOptions).then(response => {
+      console.log('API call response:', response);
+    }).catch((err) => {
+      console.log('API call error:', err.message);
+    });
+    res.locals.cryptoObject = response;
+   return next(); 
+  } catch (error) {
+      console.log('Error in CryptoController.getAllData: ', error);
+  }
+}
+
 const requestOptions = {
     method: 'GET',
     uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
@@ -14,10 +30,5 @@ const requestOptions = {
     json: true,
     gzip: true
   };
-  
-  rp(requestOptions).then(response => {
-    console.log('API call response:', response);
-  }).catch((err) => {
-    console.log('API call error:', err.message);
-  });
-  
+
+module.exports = CryptoController;
