@@ -6,8 +6,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/',
+    path: path.resolve(__dirname, 'build'),
+    publicPath: 'auto',
   },
   mode: process.env.NODE_ENV,
   module: {
@@ -36,16 +36,12 @@ module.exports = {
       template: 'src/index.html'
     }),
   ],
+
   resolve: {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, '/src'),
-    },
-    proxy: {
-      '/': 'http://localhost:3000',
-    },
+    proxy: {'/api': 'http://localhost:3000'},
+  },
     // publicPath: '/',
-  }
 };

@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react'
 import { render } from 'react-dom'
+import Prices from './UI/Prices';
 
 
 import MainContainer from './UI/MainContainer';
@@ -15,6 +16,7 @@ const App = () => {
     return (
       <div>
         <MainContainer/>
+        <Prices/>
       </div>
     )
 }

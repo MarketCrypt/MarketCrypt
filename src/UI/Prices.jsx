@@ -1,38 +1,39 @@
 import axios from 'axios'
 import React, { Component }  from 'react';
+import { set } from '../../server/server';
 
 
-class Prices extends Component {
-    state = {
-        cryptos: []
+function Prices(props) {
+    const [data, setData] = React.useState([]);
+    React.useEffect(fetchData, [])
+
+    function fetchData(){
+        axios.get('http://localhost:3000/allData')
+            .then((response)=>{
+                response.json()
+            })
+            .then((response)=>{
+                response.forEach((ele) => {
+                    data.push(ele);
+                })
+                setData(data);
+            })
+            .catch((error) =>{
+                console.log('Frontend error in /allData GET request: ', error);
+            })
     }
 
-    // componentDidMount() {
-    //    this.fetchData();
-    // }
-
-    // async fetchData() {
-    //     let qs = `?start=1&limit=5000&convert=USD`
-    //     try {
-    //         let res = await axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest' + qs, {
-    //             headers: { 
-    //                 'CMC_PRO_API_KEY': 'e631f17e-ce07-4c1e-bc28-05a06d783d11',
-    //                 'Access-Control-Allow-Origin': '*'
-    //              }
-    //         });
-    //         console.log(res)
-    //         this.setState({
-    //             cryptos: res.data.slice(0, 50)
-    //         });
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-
-    // }
-    render() {
-        return (
-            <div>asdf</div>
-        )
+    const display = [];
+    for(let i = 0; i < 5; i++){
+        console.log('data[i]', data[i])
+        display.push(<div><h1>{data[i]}</h1></div>)
     }
+
+    return (
+        <div>asdf
+            {display}
+        </div>
+    )
+    
 }
 export default Prices
