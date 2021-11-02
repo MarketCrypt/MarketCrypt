@@ -26,4 +26,4 @@ controller.getCrypto = async (req, res, next) => {
         });
     }
   
-  };
+};

@@ -2,8 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const apiRouter = require('./apiRouter')
-const CryptoController = require('./CryptoController');
+const apiRouter = require('./apiRouter');
 
 
 ///"start": "NODE_ENV=production node server/server.js",
@@ -18,17 +17,11 @@ app.use(function(req, res, next) {
 });
 
 // serve index.html on the route '/'
+app.use("/api", apiRouter);
+
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
 });
-
-app.use("/api", apiRouter);
-
-app.options('/getData', (req, res) => {
-  return res.status(200).send('ok')
-});
-
-
 ///////////////// ERROR HANDLERS
 app.use("*", (req, res) => {
   return res.status(404).send("Error, path not found");
@@ -47,11 +40,11 @@ app.use((err, req, res, next) => {
   
 /////////////////
   
-  if (process.env.NODE_ENV !== 'test') {
-    app.listen(PORT, () => {
-      console.log(`listening on port: ${PORT}`);
-    });
-  }
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`listening on port: ${PORT}`);
+  });
+}
   
 module.exports = app;
   
