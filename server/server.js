@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const CryptoController = require('./CryptoController');
+const AccountController = require('./AccountController')
+const { send } = require('process');
 
 
 ///"start": "NODE_ENV=production node server/server.js",
@@ -203,7 +205,15 @@ app.get('/getData', (req, res) => {
   return res.status(200).send(res.locals.cryptoData);
 });
 
+app.post('/createAccount', AccountController.createAccount, (req, res) => {
+  res.status(200).send("Created Account!")
+})
 
+app.get('/validateAccount', AccountController.verifyAccount, (req, res) => {
+  const { attemptUsername, attemptPassword } = req.body;
+  console.log(attemptUsername, attemptPassword) 
+  res.status(200).send("grabbed all users!")
+})
 ///////////////// ERROR HANDLERS
 
 

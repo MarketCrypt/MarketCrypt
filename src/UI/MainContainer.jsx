@@ -22,19 +22,21 @@ const MainContainer = () => {
                 {loggedIn ? <Redirect to="/personalPage" component={PersonalPage}/> : <Home/>}
             </Route> */}
             <Route exact path='/login' render={() => <Login setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>} />
-            <Route exact path='/signup' component={SignUp}/>
+            <Route exact path='/signup' render={() => <SignUp setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>} />
+            {/* <Route exact path='/signup' component={SignUp}/> */}
             {/* <Route exact path='/personalPage' component={PersonalPage}/> */}
           </Switch>
       </Router>
     )
   } else {
     return (
-      <Router>
-        <Switch>
-        <Route exact path='/' component={PersonalPage}/>
-          <PersonalPage />
-        </Switch>
-      </Router>
+      <PersonalPage setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>
+      // <Router>
+      //   <Switch>
+      //   {/* <Route exact path='/' component={PersonalPage}/> */}
+      //     <PersonalPage  />
+      //   </Switch>
+      // </Router>
     )
   }
 }

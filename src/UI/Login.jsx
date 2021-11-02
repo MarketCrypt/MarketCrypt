@@ -5,18 +5,18 @@ import SignUp from'./SignUp';
 import { Link } from 'react-router-dom'
 
 const Login = (props) => {
-    const [attemptUsername, setAttemptUsername] = useState()
-    const [attemptPassword, setattemptPassword] = useState()
+    const [attemptUsername, setAttemptUsername] = useState();
+    const [attemptPassword, setattemptPassword] = useState();
 
     // NOTES: This is where we make the GET request to our database so validate the user
-    function loginCommand() {
+    function validateAccount() {
         const { setLoggedIn } = props;
         setLoggedIn(true);
 
-        // fetch('/', {
-
-        // })
-
+        // fetch(`/validateAccount?attemptUsename=${attemptUsername}&attemptPassword=${attemptPassword}`)
+        //     .then(response => response.json())
+        //     .then(data => console.log(data))
+        // if true set state to true, if not then keep state false
     }
 
     // useEffect(()=> {
@@ -42,7 +42,7 @@ const Login = (props) => {
 
         <div className="loginContainer">
             {/* <div className="title">Tracker</div> */}
-            <button className="buttons" onClick={loginCommand}>
+            <button className="buttons" onClick={validateAccount}>
                 Login
             </button>
             <a className="loginButton" href="/login" role="button">
