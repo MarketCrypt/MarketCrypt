@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 import { render } from 'react-dom'
-import Data from './UI/Data';
+import styles from './styles.css'
 
 import MainContainer from './UI/MainContainer';
 

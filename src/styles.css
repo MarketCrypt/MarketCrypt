@@ -1,4 +1,49 @@
-.loginContainer{
+body{
+    background-color: #d0d4e3;
+    color:whitesmoke
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 800px;
+    justify-content: center;
+}
+
+.buttons{
+    margin: 10px;
+    border-radius: 50px;
+    text-decoration: none;
+    width: 234px;
+    height: 64px;
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 17px;
+    background-color: rgb(110, 110, 110);
+    outline: none;
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    color:white;
+    box-shadow: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+    box-shadow: none;
+}
+
+/* .loginContainer{
     color: rgb(110, 110, 110);
     background-color: rgb(63, 63, 63);
     width: 500px;
@@ -11,7 +56,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-}
+} */
 
 .title{
     text-shadow: 3px 3px 0 rgb(34, 28, 28);
@@ -24,19 +69,19 @@
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
-    background-size: 200% auto;
+    /* background-size: 200% auto;
     box-shadow: 0 0 20px #eee;
     width: 250px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1); */
     cursor: pointer;
-    border-radius: 50px;
+    /* border-radius: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 1s;
-    background-image: linear-gradient(to right, rgb(182, 35, 35) 5%, #ceff48 16.67%, rgb(56, 255, 99) 33.33%, rgb(36, 0, 194) 50%, rgb(56, 255, 99) 66.67%, #ceff48 83.33%,rgb(182, 35, 35) 95%)
+    background-image: linear-gradient(to right, rgb(182, 35, 35) 5%, #ceff48 16.67%, rgb(56, 255, 99) 33.33%, rgb(36, 0, 194) 50%, rgb(56, 255, 99) 66.67%, #ceff48 83.33%,rgb(182, 35, 35) 95%) */
   }
 
 .loginButton:hover { 
@@ -51,7 +96,7 @@
     width: 234px;
     height: 64px;
     border-radius: 50px;
-    color: rgb(34, 28, 28);
+    /* color: rgb(34, 28, 28); */
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 17px;
     display: flex;
