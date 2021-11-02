@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
 });
 
 // serve index.html on the route '/'
-app.use("/api", apiRouter);
+app.use('/api', apiRouter);
 
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
