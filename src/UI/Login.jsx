@@ -25,7 +25,7 @@ const Login = (props) => {
         <form>
             <label htmlFor="username">Username:</label>
             <input type="text" name="username" onChange={(ev) => setAttemptUsername(ev.target.value)} />
-            <label htmlFor="password">Username:</label>
+            <label htmlFor="password">Password:</label>
             <input type="text" name="password" onChange={(ev) => setattemptPassword(ev.target.value)} />
         </form>
         <button onClick={login}>
