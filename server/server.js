@@ -21,11 +21,14 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
 });
 
+app.options('/allData', (req, res) => {
+  res.status(200).send('ok');
+})
 
 // Currently being used to send API response to frontend
 app.get('/allData', (req, res) => {
   console.log('/allData endpoint')
-  return res.status(200).send({
+  return res.status(200).json(JSON.stringify({
     status: {
       timestamp: '2021-11-01T23:17:19.580Z',
       error_code: 0,
@@ -197,7 +200,7 @@ app.get('/allData', (req, res) => {
         quote: [Object]
       }
     ]
-  });
+  }));
 });
 
 

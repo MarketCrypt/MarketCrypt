@@ -1,16 +1,19 @@
-import axios from 'axios'
 import React, { Component }  from 'react';
-import { set } from '../../server/server';
 
-
-function Prices(props) {
+function Data() {
     const [data, setData] = React.useState([]);
     React.useEffect(fetchData, [])
 
     function fetchData(){
-        axios.get('http://localhost:3000/allData')
+          fetch('http://localhost:3000/allData', {
+              method: "GET",
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
             .then((response)=>{
                 response.json()
+                console.log('response first then: ', response)
             })
             .then((response)=>{
                 response.forEach((ele) => {
@@ -36,4 +39,4 @@ function Prices(props) {
     )
     
 }
-export default Prices
+export default Data
