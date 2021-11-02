@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function Table(props) {
     const cryptoData = props.cryptoData;
-    console.log('inside table component hemwatie looook: ', cryptoData)
 
     const displayTable = [];
     for(let i = 0; i < cryptoData.length; i++){

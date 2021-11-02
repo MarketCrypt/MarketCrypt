@@ -21,12 +21,12 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-app.options('/hello', (req, res) => {
+app.options('/getData', (req, res) => {
   return res.status(200).send('ok')
 });
 
 // Currently being used to send API response to frontend
-app.get('/hello', (req, res) => {
+app.get('/getData', (req, res) => {
   res.locals.cryptoData = {
     status: {
       timestamp: '2021-11-02T02:23:28.284Z',

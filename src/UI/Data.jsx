@@ -7,7 +7,7 @@ function Data() {
     React.useEffect(()=>{
         fetchData();
         function fetchData(){
-        fetch('http://localhost:3000/hello',{
+        fetch('http://localhost:3000/getData',{
             method: "GET",
             mode: "cors",
             headers: {
