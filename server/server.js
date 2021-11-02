@@ -21,19 +21,18 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-app.options('/allData', (req, res) => {
-  res.status(200).send('ok');
-})
+app.options('/hello', (req, res) => {
+  return res.status(200).send('ok')
+});
 
 // Currently being used to send API response to frontend
-app.get('/allData', (req, res) => {
-  console.log('/allData endpoint')
-  return res.status(200).json(JSON.stringify({
+app.get('/hello', (req, res) => {
+  res.locals.cryptoData = {
     status: {
-      timestamp: '2021-11-01T23:17:19.580Z',
+      timestamp: '2021-11-02T02:23:28.284Z',
       error_code: 0,
       error_message: null,
-      elapsed: 17,
+      elapsed: 16,
       credit_count: 1,
       notice: null,
       total_count: 6942
@@ -48,11 +47,11 @@ app.get('/allData', (req, res) => {
         date_added: '2013-04-28T00:00:00.000Z',
         tags: [Array],
         max_supply: 21000000,
-        circulating_supply: 18861043,
-        total_supply: 18861043,
+        circulating_supply: 18861218,
+        total_supply: 18861218,
         platform: null,
         cmc_rank: 1,
-        last_updated: '2021-11-01T23:16:02.000Z',
+        last_updated: '2021-11-02T02:22:02.000Z',
         quote: [Object]
       },
       {
@@ -64,11 +63,11 @@ app.get('/allData', (req, res) => {
         date_added: '2015-08-07T00:00:00.000Z',
         tags: [Array],
         max_supply: null,
-        circulating_supply: 118169914.999,
-        total_supply: 118169914.999,
+        circulating_supply: 118172272.499,
+        total_supply: 118172272.499,
         platform: null,
         cmc_rank: 2,
-        last_updated: '2021-11-01T23:16:02.000Z',
+        last_updated: '2021-11-02T02:22:02.000Z',
         quote: [Object]
       },
       {
@@ -84,7 +83,7 @@ app.get('/allData', (req, res) => {
         total_supply: 166801148,
         platform: null,
         cmc_rank: 3,
-        last_updated: '2021-11-01T23:15:20.000Z',
+        last_updated: '2021-11-02T02:21:12.000Z',
         quote: [Object]
       },
       {
@@ -92,15 +91,15 @@ app.get('/allData', (req, res) => {
         name: 'Tether',
         symbol: 'USDT',
         slug: 'tether',
-        num_market_pairs: 18928,
+        num_market_pairs: 18931,
         date_added: '2015-02-25T00:00:00.000Z',
         tags: [Array],
         max_supply: null,
-        circulating_supply: 70245260761.65137,
+        circulating_supply: 70545760760.65137,
         total_supply: 71357845272.48163,
         platform: [Object],
         cmc_rank: 4,
-        last_updated: '2021-11-01T23:15:21.000Z',
+        last_updated: '2021-11-02T02:21:21.000Z',
         quote: [Object]
       },
       {
@@ -112,11 +111,11 @@ app.get('/allData', (req, res) => {
         date_added: '2017-10-01T00:00:00.000Z',
         tags: [Array],
         max_supply: 45000000000,
-        circulating_supply: 33270348896.74,
+        circulating_supply: 33270344508.709,
         total_supply: 33676945631.8,
         platform: null,
         cmc_rank: 5,
-        last_updated: '2021-11-01T23:15:22.000Z',
+        last_updated: '2021-11-02T02:21:21.000Z',
         quote: [Object]
       },
       {
@@ -128,11 +127,11 @@ app.get('/allData', (req, res) => {
         date_added: '2020-04-10T00:00:00.000Z',
         tags: [Array],
         max_supply: null,
-        circulating_supply: 300941313.1120979,
-        total_supply: 507977915.0629475,
+        circulating_supply: 300941215.0239728,
+        total_supply: 507977816.4365074,
         platform: null,
         cmc_rank: 6,
-        last_updated: '2021-11-01T23:16:05.000Z',
+        last_updated: '2021-11-02T02:22:04.000Z',
         quote: [Object]
       },
       {
@@ -148,7 +147,7 @@ app.get('/allData', (req, res) => {
         total_supply: 99990181120,
         platform: null,
         cmc_rank: 7,
-        last_updated: '2021-11-01T23:16:03.000Z',
+        last_updated: '2021-11-02T02:22:03.000Z',
         quote: [Object]
       },
       {
@@ -164,7 +163,7 @@ app.get('/allData', (req, res) => {
         total_supply: 1103303471.382273,
         platform: null,
         cmc_rank: 8,
-        last_updated: '2021-11-01T23:16:05.000Z',
+        last_updated: '2021-11-02T02:22:06.000Z',
         quote: [Object]
       },
       {
@@ -180,7 +179,7 @@ app.get('/allData', (req, res) => {
         total_supply: 589738956207003.8,
         platform: [Object],
         cmc_rank: 9,
-        last_updated: '2021-11-01T23:15:22.000Z',
+        last_updated: '2021-11-02T02:21:21.000Z',
         quote: [Object]
       },
       {
@@ -196,11 +195,12 @@ app.get('/allData', (req, res) => {
         total_supply: 131943568830.3418,
         platform: null,
         cmc_rank: 10,
-        last_updated: '2021-11-01T23:16:03.000Z',
+        last_updated: '2021-11-02T02:22:03.000Z',
         quote: [Object]
       }
     ]
-  }));
+  };
+  return res.status(200).send(res.locals.cryptoData);
 });
 
 
