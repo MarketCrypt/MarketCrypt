@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
-const controller = {};
+const SignupController = {};
 const { Pool } = require('pg');
 const saltRounds = 10;
 const PSQL_URI = temp;
 
-controller.createUser = (req, res, next) => {
+SignupController.createUser = (req, res, next) => {
   const {username, password, userID} = req.body;
   const db = new Pool({connectionString: PSQL_URI});
 
@@ -22,4 +22,4 @@ controller.createUser = (req, res, next) => {
   });
 };
 
-module.exports = controller;
+module.exports = SignupController;
