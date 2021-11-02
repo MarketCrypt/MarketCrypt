@@ -1,8 +1,12 @@
 import React from "react";
+import Data from './Data'
 
 const PersonalPage = () => {
     return(
-        <h1>User is logged in</h1>
+        <div>
+            <h1>User is logged in</h1>
+            <Data/>
+        </div>
     )
 }
 

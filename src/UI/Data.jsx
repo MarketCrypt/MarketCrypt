@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from './Table';
 
 function Data() {
-    const [cryptoData, setData] = React.useState([]);
+    const [cryptoData, setData] = useState([]);
     
-    React.useEffect(()=>{
+    useEffect(()=>{
         fetchData();
         function fetchData(){
         fetch('http://localhost:3000/getData',{
