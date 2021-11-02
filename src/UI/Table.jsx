@@ -23,7 +23,7 @@ export default function Table(props) {
 
     return (
         <div>
-            <table>
+            <table className="table table-striped">
                 <tbody>
                     <tr>
                         <th>id</th>
