@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --open & nodemon server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --detectOpenHandles",
+    "test:watch": "jest --watch",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
     "dev": "NODE_ENV=development webpack serve --open & nodemon server/server.js"
   },
@@ -37,6 +38,8 @@
     "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6",
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
