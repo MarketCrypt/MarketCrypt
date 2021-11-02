@@ -14,8 +14,7 @@ const App = () => {
 
     return (
       <div>
-        <MainContainer/>
-        <Data/>
+          <MainContainer/>
       </div>
     )
 }
