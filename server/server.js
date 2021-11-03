@@ -2,10 +2,10 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const apiRouter = require('./apiRouter');
-export const PORT = 3000;
+const PORT = 3000;
 
 const CryptoController = require('./CryptoController');
-const AccountController = require('./AccountController')
+const { verifyAccount } = require('./LoginController')
 const { send } = require('process');
 const { findUser, createUser } = require('./SignupController')
 
@@ -33,6 +33,12 @@ app.post('/createAccount', findUser, createUser, (req, res) => {
   res.status(200).json("Created Account!")
 })
 
+app.post('/login', verifyAccount, (req, res) => {
+  const { attemptUsername, attemptPassword } = req.body;
+  console.log(attemptUsername, attemptPassword) 
+  res.status(200).send("grabbed all users!")
+})
+
 ///////////////// ERROR HANDLERS
 app.use("*", (req, res) => {
   return res.status(404).send("Error, path not found");
@@ -58,11 +64,7 @@ app.use((err, req, res, next) => {
 //   res.status(200).send("grabbed all users!")
 // })
 
-app.get('/validateAccount', AccountController.verifyAccount, (req, res) => {
-  const { attemptUsername, attemptPassword } = req.body;
-  console.log(attemptUsername, attemptPassword) 
-  res.status(200).send("grabbed all users!")
-})
+
 ///////////////// ERROR HANDLERS
 
 
