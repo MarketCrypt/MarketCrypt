@@ -13,7 +13,7 @@ const Login = (props) => {
     // NOTES: This is where we make the GET request to our database so validate the user
     function validateAccount() {
         setLoggedIn(true);
-
+        
         fetch(`/validateAccount?attemptUsename=${attemptUsername}&attemptPassword=${attemptPassword}`)
             .then(response => response.json())
             .then(data => console.log(data))

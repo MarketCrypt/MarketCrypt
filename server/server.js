@@ -58,11 +58,11 @@ app.use((err, req, res, next) => {
 //   res.status(200).send("grabbed all users!")
 // })
 
-app.get('/validateAccount', AccountController.verifyAccount, (req, res) => {
-  const { attemptUsername, attemptPassword } = req.body;
-  console.log(attemptUsername, attemptPassword) 
-  res.status(200).send("grabbed all users!")
-})
+// app.get('/validateAccount', AccountController.verifyAccount, (req, res) => {
+//   const { attemptUsername, attemptPassword } = req.body;
+//   console.log(attemptUsername, attemptPassword) 
+//   res.status(200).send("grabbed all users!")
+// })
 ///////////////// ERROR HANDLERS
 
 
