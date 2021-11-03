@@ -25,8 +25,8 @@ module.exports = {
         test: /\.s?css$/,
         use:[
           "style-loader",
-          "css-loader",
-          "sass-loader"
+          "css-loader"
+          // "sass-loader"
         ],
       }
     ]
@@ -46,5 +46,6 @@ module.exports = {
     proxy: {
       '/': 'http://localhost:3000',
     },
+    port: 9000
   }
 };
