@@ -7,7 +7,7 @@ function Data() {
     useEffect(()=>{
         fetchData();
         function fetchData(){
-        fetch('http://localhost:3000/getData',{
+        fetch('http://localhost:3000/api/getData',{
             method: "GET",
             mode: "cors",
             headers: {
@@ -24,7 +24,7 @@ function Data() {
               setData(holdData);
           })
           .catch((error) =>{
-              console.log('Frontend error in /hello GET request: ', error);
+              console.log('Frontend error in /getData GET request: ', error);
           })
         }}, []);
 
