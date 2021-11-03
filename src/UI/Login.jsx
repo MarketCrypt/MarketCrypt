@@ -29,7 +29,7 @@ const Login = (props) => {
     return (
         
     <div className="signin">
-        <form>
+        <form className="signin-form">
             <label htmlFor="username">Username:</label>
             <input type="text" name="username" onChange={(ev) => setAttemptUsername(ev.target.value)} />
             <label htmlFor="password">Password:</label>
