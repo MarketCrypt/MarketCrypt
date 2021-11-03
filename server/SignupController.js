@@ -6,9 +6,9 @@ const PSQL_URI = temp;
 
 SignupController.createUser = (req, res, next) => {
   const {username, password, userID} = req.body;
-  const db = new Pool({connectionString: PSQL_URI});
+  // const db = new Pool({connectionString: PSQL_URI});
 
-  bcrypt.hash(password, saltRounds, (err,hash) => {
+  bcrypt.hash(password, saltRounds, (err, hash) => {
     try {
       db.query('INSERT INTO Auth (username, password, userID) VALUES ($1, $2, $3)', [username, hash, userID]);
       return next();

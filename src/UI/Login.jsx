@@ -5,18 +5,19 @@ import SignUp from'./SignUp';
 import { Link } from 'react-router-dom'
 
 const Login = (props) => {
+    const { setLoggedIn, loggedIn } = props;
+
     const [attemptUsername, setAttemptUsername] = useState();
     const [attemptPassword, setattemptPassword] = useState();
 
     // NOTES: This is where we make the GET request to our database so validate the user
     function validateAccount() {
-        const { setLoggedIn } = props;
         setLoggedIn(true);
 
-        // fetch(`/validateAccount?attemptUsename=${attemptUsername}&attemptPassword=${attemptPassword}`)
-        //     .then(response => response.json())
-        //     .then(data => console.log(data))
-        // if true set state to true, if not then keep state false
+        fetch(`/validateAccount?attemptUsename=${attemptUsername}&attemptPassword=${attemptPassword}`)
+            .then(response => response.json())
+            .then(data => console.log(data))
+        //if true set state to true, if not then keep state false
     }
 
     // useEffect(()=> {
