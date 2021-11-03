@@ -34,8 +34,9 @@ function Prices() {
 
     return (
         <div>
-            <h1>inside Prices.jsx </h1>
             <PricesGraph cryptoPrices = {cryptoPrices}/>
+            {/* <Ethe cryptoPrices = {cryptoPrices}/> */}
+            
         </div>
     )
     

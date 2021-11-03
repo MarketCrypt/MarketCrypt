@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const apiRouter = require('./apiRouter');
-export const PORT = 3000;
+const PORT = 3000;
 
 
 ///"start": "NODE_ENV=production node server/server.js",
@@ -15,15 +15,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log(`listening on port: ${PORT}`);
-  });
-}
   
-  
-
 // serve index.html on the route '/'
 app.use('/api', apiRouter);
 
@@ -39,59 +31,59 @@ app.get('/getPrices', (req, res) => {
   res.locals.prices = [
     // time 10:00
     {
-      1:{name: 'bitcoin', price: 7863723},
-      2: {name: 'ethereum', price: 2322},
-      3: {name: 'binance_coin', price: 234}
-    },
-    // time 10:10
-    {
-      1:{name: 'bitcoin', price: 7294460},
-      2: {name: 'ethereum', price: 1352},
-      3: {name: 'binance_coin', price: 84}
-    },
-    // time: 10:20
-    {
-      1:{name: 'bitcoin', price: 1034043},
-      2: {name: 'ethereum', price: 3059},
-      3: {name: 'binance_coin', price: 102}
+      "time": "2021-11-03t01:46:40.551Z",
+      "btc": 63107.054,
+      "eth": 4519.842,
+      "bnb": 558.790
     },
     {
-      1:{name: 'bitcoin', price: 4389248},
-      2: {name: 'ethereum', price: 5384},
-      3: {name: 'binance_coin', price: 1340}
+      "time": "2021-11-03t01:48:40.551Z",
+      "btc": 63107.054,
+      "eth": 4467.842,
+      "bnb": 594.790
     },
     {
-      1:{name: 'bitcoin', price: 7703489},
-      2: {name: 'ethereum', price: 6943},
-      3: {name: 'binance_coin', price: 345}
+      "time": "2021-11-03t01:50:40.551Z",
+      "btc": 64027.054,
+      "eth": 4538.842,
+      "bnb": 559.790
     },
     {
-      1:{name: 'bitcoin', price: 3989920},
-      2: {name: 'ethereum', price: 4893},
-      3: {name: 'binance_coin', price: 779}
+      "time": "2021-11-03t01:52:40.551Z",
+      "btc": 63740.054,
+      "eth": 4688.842,
+      "bnb": 557.790
     },
     {
-      1:{name: 'bitcoin', price: 2982985},
-      2: {name: 'ethereum', price: 5930},
-      3: {name: 'binance_coin', price: 94}
+      "time": "2021-11-03t01:54:40.551Z",
+      "btc": 63365.054,
+      "eth": 4599.842,
+      "bnb": 547.790
     },
     {
-      1:{name: 'bitcoin', price: 2984298},
-      2: {name: 'ethereum', price: 4382},
-      3: {name: 'binance_coin', price: 492}
-    },    {
-      1:{name: 'bitcoin', price: 3985420},
-      2: {name: 'ethereum', price: 3985},
-      3: {name: 'binance_coin', price: 3029}
-    },    {
-      1:{name: 'bitcoin', price: 2095204},
-      2: {name: 'ethereum', price: 2849},
-      3: {name: 'binance_coin', price: 2184}
-    },    {
-      1:{name: 'bitcoin', price: 3289252},
-      2: {name: 'ethereum', price: 39284},
-      3: {name: 'binance_coin', price: 1398}
-    }
+      "time": "2021-11-03t01:56:40.551Z",
+      "btc": 63026.054,
+      "eth": 4519.842,
+      "bnb": 542.790
+    },
+    {
+      "time": "2021-11-03t01:58:40.551Z",
+      "btc": 62736.054,
+      "eth": 4543.842,
+      "bnb": 554.790
+    },
+    {
+      "time": "2021-11-03t01:60:40.551Z",
+      "btc": 63225.054,
+      "eth": 4600.842,
+      "bnb": 558.790
+    },
+    {
+      "time": "2021-11-03t01:62:40.551Z",
+      "btc": 62830.054,
+      "eth": 4583.842,
+      "bnb": 550.790
+    },
   ]
   console.log('object  stored in /getprices');
   return res.status(200).json(res.locals.prices)
@@ -272,9 +264,9 @@ app.get('/getData', (req, res) => {
       }
     ]
 }
+    return res.status(200).json(res.locals.cryptoData)
 });
 
-module.exports = app;
 
 ///////////////// ERROR HANDLERS
 app.use("*", (req, res) => {
@@ -290,10 +282,14 @@ app.use((err, req, res, next) => {
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
-  
+});
   
 /////////////////
 
 
-
-
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`listening on port: ${PORT}`);
+  });
+}
+module.exports = app;

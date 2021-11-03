@@ -16,8 +16,9 @@ function Data() {
         })
           .then((response)=>response.json())
           .then((response)=> {
+              console.log(response)
               const holdData = [];
-              const responseData = response.data;
+              const responseData = response;
               responseData.forEach(ele => {
                 holdData.push(ele)
               })

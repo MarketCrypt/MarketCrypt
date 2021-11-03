@@ -1,65 +1,240 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
+// import { Chart } from 'chart.js';
+import { Chart } from 'react-chartjs-2'
+import RenderGraphs from './RenderGraphs';
 
 export default function PricesGraph(props) {
     const cryptoPrices = props.cryptoPrices;
     console.log('inside PricesGraph  component', cryptoPrices)
 
-    const [displaying] = useState([25,50,35,15,94,10]);
-    const svgRef = useRef();
+    const displayBTC = [];
+    const displayETH = [];
+    const displayBNB = [];
+    const displayPoints = [];
 
-    useEffect(()=>{
-        // setting up  svg
-        const w = 400;
-        const h  = 100;
-        const svg = d3.select(svgRef.current)
-          .attr('width', w)
-          .attr('height', h)
-          .style('background', '#d3d3d3')
-          .style('margin-top', '50')
-          .style('overflow', 'visible'); // need overflow to be  visible, to make sure things outside the container
-          // it visible
-        // setting up the scaling
-        const xScale = d3.scaleLinear() // gives linear scale to plot points
-          .domain([0, displaying.length-1]) // set the domain and range for scaleLinear
-          // ^^^^^ basically determines how many ticks/plots we have
-          .range([0, w]) // width of entire left and  right values????
-        const yScale = d3.scaleLinear()
-          .domain([0, h]) // determines the  height of  our chart
-          .range([h, 0]) // the range is inverted, since we start from the top left, and go downwards
-        const generateScaledLine = d3.line()
-          .x((d, i) => xScale(i)) // i value is a particular number we are getting from d3
-          .y(yScale)
-          .curve(d3.curveCardinal); // generate the line  we  want to create, and scale it appropriately
-        // setting the axes
-        const xAxis  = d3.axisBottom(xScale)
-          .ticks(displaying.length)
-          .tickFormat(i => i + 1);
-        const yAxis = d3.axisLeft(yScale)
-          .ticks(5)
-        svg.append('g')
-          .call(xAxis)
-          .attr('transform', `translate(0, ${h})`);
-        svg.append('g')
-          .call(yAxis)
-        // setting up the data for the svg
-        svg.selectAll('.line')
-          .data([displaying])
-          .join('path') // path we created
-            .attr('d', d => generateScaledLine(d)) // generate the line we've already created the function for
-            // d is  basically the data, and its being passed into generateScaledLine
-            .attr('fill', 'none') // by default line willbe colored in from top  to  bottom, want  to be thin  line
-            .attr('stroke', 'black')
+    for(let i = 0; i < cryptoPrices.length; i++){
+      displayPoints.push(cryptoPrices[i].time)
+      displayBTC.push(cryptoPrices[i].btc)
+      displayETH.push(cryptoPrices[i].eth)
+      displayBNB.push(cryptoPrices[i].bnb)
+    }
 
-    }, [displaying])
+    const CHART_BTC = document.getElementById('myChart1');
+    // const CHART_ETH = document.getElementById('myChart2');
+    // const CHART_BNB = document.getElementById('myChart3');
 
-    return(
+    // const CHART_ETH = document.createElement('canvas');
+    // CHART_ETH.setAttribute('id', 'myChart2')
+    // const CHART_BNB = document.createElement('canvas');
+    // CHART_BNB.setAttribute('id', 'myChart2')
+    
+
+    const Bitcoin = new Chart(CHART_BTC, {
+      type: 'line',
+      data: {
+        labels: displayPoints,
+        datasets: [
+          {
+            label: "Bitcoin",
+            fill: false,
+            lineTension: 0.5,
+            backgroundColor: 'yellow',
+            borderColor: 'yellow',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJointStyle: 'miter',
+            pointBorderColor: 'orange',
+            pointBackgroundColor: 'yellow',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'pink',
+            pointHoverBorderColor: 'white',
+            pointHoverWidth: '2',
+            pointRadius: '1',
+            pointHitRadius: '6',
+            data: displayBTC,
+          },
+          {
+                    label: "Ethereum",
+                    fill: false,
+                    lineTension: 1,
+                    backgroundColor: 'purple',
+                    borderColor: 'purple',
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJointStyle: 'miter',
+                    pointBorderColor: 'orange',
+                    pointBackgroundColor: 'purple',
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: 'pink',
+                    pointHoverBorderColor: 'white',
+                    pointHoverWidth: '2',
+                    pointRadius: '1',
+                    pointHitRadius: '6',
+                    data: displayETH,
+                  },
+          {
+                    label: "Binance Coin",
+                    fill: false,
+                    lineTension: 2,
+                    backgroundColor: 'green',
+                    borderColor: 'green',
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJointStyle: 'miter',
+                    pointBorderColor: 'orange',
+                    pointBackgroundColor: 'green',
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: 'pink',
+                    pointHoverBorderColor: 'white',
+                    pointHoverWidth: '2',
+                    pointRadius: '1',
+                    pointHitRadius: '6',
+                    data: displayBNB,
+                  },
+        ]
+      }
+    })
+
+//     if(displayBTC !== []){
+//     useEffect( async ()=>{
+    // const Ethereum = new Chart(CHART_ETH, {
+    //   type: 'line',
+    //   data: {
+    //     labels: displayPoints,
+    //     datasets: [
+    //       {
+    //         label: "Ethereum",
+    //         fill: false,
+    //         lineTension: 1,
+    //         backgroundColor: 'purple',
+    //         borderColor: 'purple',
+    //         borderCapStyle: 'butt',
+    //         borderDash: [],
+    //         borderDashOffset: 0.0,
+    //         borderJointStyle: 'miter',
+    //         pointBorderColor: 'red',
+    //         pointBackgroundColor: 'orange',
+    //         pointBorderWidth: 1,
+    //         pointHoverRadius: 5,
+    //         pointHoverBackgroundColor: 'orange',
+    //         pointHoverBorderColor: 'white',
+    //         pointHoverWidth: '2',
+    //         pointRadius: '1',
+    //         pointHitRadius: '10',
+    //         data: displayETH,
+    //       },
+    //     ]
+    //   }
+    // })
+
+
+    // const BinanceCoin = new Chart(CHART_BNB, {
+    //   type: 'line',
+    //   data: {
+    //     labels: displayPoints,
+    //     datasets: [
+    //       {
+    //         label: "Binance Coin",
+    //         fill: false,
+    //         lineTension: 2,
+    //         backgroundColor: 'aqua',
+    //         borderColor: 'aqua',
+    //         borderCapStyle: 'butt',
+    //         borderDash: [],
+    //         borderDashOffset: 0.0,
+    //         borderJointStyle: 'miter',
+    //         pointBorderColor: 'red',
+    //         pointBackgroundColor: 'aqua',
+    //         pointBorderWidth: 1,
+    //         pointHoverRadius: 5,
+    //         pointHoverBackgroundColor: 'pink',
+    //         pointHoverBorderColor: 'white',
+    //         pointHoverWidth: '2',
+    //         pointRadius: '1',
+    //         pointHitRadius: '10',
+    //         data: displayBNB,
+    //       },
+    //     ]
+    //   }
+    // })
+
+
+
+    // const Ethereum = {
+    //   type: 'line',
+    //   data: {
+    //     labels: displayPoints,
+    //     datasets: [
+    //       {
+    //         label: "Ethereum",
+    //         fill: false,
+    //         lineTension: 1,
+    //         backgroundColor: 'purple',
+    //         borderColor: 'purple',
+    //         borderCapStyle: 'butt',
+    //         borderDash: [],
+    //         borderDashOffset: 0.0,
+    //         borderJointStyle: 'miter',
+    //         pointBorderColor: 'red',
+    //         pointBackgroundColor: 'orange',
+    //         pointBorderWidth: 1,
+    //         pointHoverRadius: 5,
+    //         pointHoverBackgroundColor: 'orange',
+    //         pointHoverBorderColor: 'white',
+    //         pointHoverWidth: '2',
+    //         pointRadius: '1',
+    //         pointHitRadius: '10',
+    //         data: displayETH,
+    //       },
+
+    //     ]
+    //   }
+    // }
+
+    // const BinanceCoin = {
+    //   type: 'line',
+    //   data: {
+    //     labels: displayPoints,
+    //     datasets: [
+    //       {
+    //         label: "Binance Coin",
+    //         fill: false,
+    //         lineTension: 2,
+    //         backgroundColor: 'aqua',
+    //         borderColor: 'aqua',
+    //         borderCapStyle: 'butt',
+    //         borderDash: [],
+    //         borderDashOffset: 0.0,
+    //         borderJointStyle: 'miter',
+    //         pointBorderColor: 'red',
+    //         pointBackgroundColor: 'aqua',
+    //         pointBorderWidth: 1,
+    //         pointHoverRadius: 5,
+    //         pointHoverBackgroundColor: 'pink',
+    //         pointHoverBorderColor: 'white',
+    //         pointHoverWidth: '2',
+    //         pointRadius: '1',
+    //         pointHitRadius: '10',
+    //         data: displayBNB,
+    //       },
+    //     ]
+    //   }
+    // };
+
+    // BODY.appendChild(CHART_BNB)
+    // BODY.appendChild(CHART_ETH)
+    return (
         <div>
-            <h1>
-                hello prices graph
-            </h1>
-            <svg ref={svgRef}></svg>
+          <div className="graphBoxy"><canvas id="myChart1"></canvas></div> 
         </div>
-    )
+    ) 
+      // <RenderGraphs displayPoints={displayPoints} displayETH={displayETH} displayBNB={displayBNB} />
     
 }
