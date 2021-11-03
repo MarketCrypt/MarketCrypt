@@ -34,9 +34,8 @@ app.post('/createAccount', findUser, createUser, (req, res) => {
 })
 
 app.post('/login', verifyAccount, (req, res) => {
-  const { attemptUsername, attemptPassword } = req.body;
-  console.log(attemptUsername, attemptPassword) 
-  res.status(200).send("grabbed all users!")
+  // i forgot why does using .json work and not .send? -KK
+  res.status(200).json("Verified Account!")
 })
 
 ///////////////// ERROR HANDLERS
