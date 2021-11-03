@@ -1,8 +1,8 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const PORT = 3000;
 const apiRouter = require('./apiRouter');
+export const PORT = 3000;
 
 
 ///"start": "NODE_ENV=production node server/server.js",
