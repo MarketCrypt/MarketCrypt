@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
 // import { Chart } from 'chart.js';
-import { Chart } from 'react-chartjs-2'
-import RenderGraphs from './RenderGraphs';
+// import { Chart } from 'react-chartjs-2'
+// import RenderGraphs from './RenderGraphs';
 
 export default function PricesGraph(props) {
     const cryptoPrices = props.cryptoPrices;
