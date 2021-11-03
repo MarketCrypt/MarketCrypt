@@ -6,7 +6,7 @@ export default function Table(props) {
     const displayTable = [];
     for(let i = 0; i < cryptoData.length; i++){
         displayTable.push(
-            <tr>
+            <tr key={i}>
                 <td>{cryptoData[i].id}</td>
                 <td>{cryptoData[i].name}</td>
                 <td>{cryptoData[i].symbol}</td>

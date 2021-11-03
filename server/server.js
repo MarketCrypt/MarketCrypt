@@ -2,7 +2,12 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const apiRouter = require('./apiRouter');
-export const PORT = 3000;
+const PORT = 3000;
+
+const CryptoController = require('./CryptoController');
+const { verifyAccount } = require('./LoginController')
+const { send } = require('process');
+const { findUser, createUser } = require('./SignupController')
 
 
 ///"start": "NODE_ENV=production node server/server.js",
@@ -19,9 +24,20 @@ app.use(function(req, res, next) {
 // serve index.html on the route '/'
 app.use('/api', apiRouter);
 
+
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
 });
+
+app.post('/createAccount', findUser, createUser, (req, res) => {
+  res.status(200).json("Created Account!")
+})
+
+app.post('/login', verifyAccount, (req, res) => {
+  // i forgot why does using .json work and not .send? -KK
+  res.status(200).send(json("Verified Account"))
+})
+
 ///////////////// ERROR HANDLERS
 app.use("*", (req, res) => {
   return res.status(404).send("Error, path not found");
@@ -37,6 +53,33 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
+
+
+
+//create account with bcrypt
+// app.post('/validateAccount', SignupController.verifyAccount, (req, res) => {
+//   const { attemptUsername, attemptPassword } = req.body;
+//   console.log(attemptUsername, attemptPassword) 
+//   res.status(200).send("grabbed all users!")
+// })
+
+///////////////// ERROR HANDLERS
+
+
+app.use("*", (req, res) => {
+    return res.status(404).send("Error, path not found");
+  });
+  
+
+  app.use((err, req, res, next) => {
+    const errorObj = {
+      log: "global error handler in express app",
+      message: { err: "global error handler in express app" },
+    };
+    const errorObject = Object.assign({}, errorObj, err);
+    console.log(errorObject);
+    return res.status(500).json(errorObject);
+  });
   
 /////////////////
   
