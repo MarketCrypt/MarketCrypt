@@ -10,8 +10,8 @@ const SignUp = (props) => {
 
     const [ message, setMessage] = useState('')
 
-    async function createAccount() {
-        await fetch('/createAccount', {
+    function createAccount() {
+        fetch('/createAccount', {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/json'
@@ -20,10 +20,8 @@ const SignUp = (props) => {
         })
         .then(response => response.json())
         .then(data => {
-            if (data['err'] === 'Username already taken!') {
+            if (data['err'] === 'Username already taken!')  setMessage(data['err'])
                 // alert(data['err'])
-                setMessage(data['err'])
-            }
             else {
                 // alert('Thanks for signing up! :)')
                 setMessage(
@@ -44,7 +42,7 @@ const SignUp = (props) => {
                 <label htmlFor="username">Username:</label>
                 <input type="text" name="username" onChange={(ev) => setAttemptUsername(ev.target.value)} />
                 <label htmlFor="password">Password:</label>
-                <input type="text" name="password" onChange={(ev) => setattemptPassword(ev.target.value)} />
+                <input type="password" name="password" onChange={(ev) => setattemptPassword(ev.target.value)} />
             </form>
             <div className="errorMessageContainer">
                 {message}
