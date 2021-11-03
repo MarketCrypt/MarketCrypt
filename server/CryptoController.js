@@ -18,10 +18,19 @@ CryptoController.getAllData = (req, res, next) => {
   }
 }
 
+// historical endpoint isnt free
+// info endpoint not found on cryptocurrency/listings/
+// not found https://pro-api.coinmarketcap.com/v1/blockchain/
+// not found https://pro-api.coinmarketcap.com/v1/blockchain/listings/latest
+// isnt free: https://pro-api.coinmarketcap.com/v1/cryptocurrency/map
+// /v1/cryptocurrency/info
+
 const requestOptions = {
     method: 'GET',
-    uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
+    uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/categories',
     qs: {
+      'id': '1',
+
       'start': '1',
       'limit': '10',
       'convert': 'USD'

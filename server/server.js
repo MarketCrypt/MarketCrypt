@@ -25,6 +25,72 @@ app.options('/getData', (req, res) => {
   return res.status(200).send('ok')
 });
 
+app.options('/getPrices', (req, res) => {
+  return res.status(200).send('ok')
+});
+
+app.get('/getPrices', (req, res) => {
+  res.locals.prices = [
+    // time 10:00
+    {
+      1:{name: 'bitcoin', price: 7863723},
+      2: {name: 'ethereum', price: 2322},
+      3: {name: 'binance_coin', price: 234}
+    },
+    // time 10:10
+    {
+      1:{name: 'bitcoin', price: 7294460},
+      2: {name: 'ethereum', price: 1352},
+      3: {name: 'binance_coin', price: 84}
+    },
+    // time: 10:20
+    {
+      1:{name: 'bitcoin', price: 1034043},
+      2: {name: 'ethereum', price: 3059},
+      3: {name: 'binance_coin', price: 102}
+    },
+    {
+      1:{name: 'bitcoin', price: 4389248},
+      2: {name: 'ethereum', price: 5384},
+      3: {name: 'binance_coin', price: 1340}
+    },
+    {
+      1:{name: 'bitcoin', price: 7703489},
+      2: {name: 'ethereum', price: 6943},
+      3: {name: 'binance_coin', price: 345}
+    },
+    {
+      1:{name: 'bitcoin', price: 3989920},
+      2: {name: 'ethereum', price: 4893},
+      3: {name: 'binance_coin', price: 779}
+    },
+    {
+      1:{name: 'bitcoin', price: 2982985},
+      2: {name: 'ethereum', price: 5930},
+      3: {name: 'binance_coin', price: 94}
+    },
+    {
+      1:{name: 'bitcoin', price: 2984298},
+      2: {name: 'ethereum', price: 4382},
+      3: {name: 'binance_coin', price: 492}
+    },    {
+      1:{name: 'bitcoin', price: 3985420},
+      2: {name: 'ethereum', price: 3985},
+      3: {name: 'binance_coin', price: 3029}
+    },    {
+      1:{name: 'bitcoin', price: 2095204},
+      2: {name: 'ethereum', price: 2849},
+      3: {name: 'binance_coin', price: 2184}
+    },    {
+      1:{name: 'bitcoin', price: 3289252},
+      2: {name: 'ethereum', price: 39284},
+      3: {name: 'binance_coin', price: 1398}
+    }
+  ]
+  console.log('object  stored in /getprices');
+  return res.status(200).json(res.locals.prices)
+});
+
 // Currently being used to send API response to frontend
 app.get('/getData', (req, res) => {
   res.locals.cryptoData = {
