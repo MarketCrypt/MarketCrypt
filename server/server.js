@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const apiRouter = require('./apiRouter');
-const PORT = 3000;
+export const PORT = 3000;
 
 const CryptoController = require('./CryptoController');
 const AccountController = require('./AccountController')
