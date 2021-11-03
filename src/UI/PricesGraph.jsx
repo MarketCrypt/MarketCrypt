@@ -30,77 +30,77 @@ export default function PricesGraph(props) {
     // CHART_BNB.setAttribute('id', 'myChart2')
     
 
-    const Bitcoin = new Chart(CHART_BTC, {
-      type: 'line',
-      data: {
-        labels: displayPoints,
-        datasets: [
-          {
-            label: "Bitcoin",
-            fill: false,
-            lineTension: 0.5,
-            backgroundColor: 'yellow',
-            borderColor: 'yellow',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJointStyle: 'miter',
-            pointBorderColor: 'orange',
-            pointBackgroundColor: 'yellow',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'pink',
-            pointHoverBorderColor: 'white',
-            pointHoverWidth: '2',
-            pointRadius: '1',
-            pointHitRadius: '6',
-            data: displayBTC,
-          },
-          {
-                    label: "Ethereum",
-                    fill: false,
-                    lineTension: 1,
-                    backgroundColor: 'purple',
-                    borderColor: 'purple',
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJointStyle: 'miter',
-                    pointBorderColor: 'orange',
-                    pointBackgroundColor: 'purple',
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: 'pink',
-                    pointHoverBorderColor: 'white',
-                    pointHoverWidth: '2',
-                    pointRadius: '1',
-                    pointHitRadius: '6',
-                    data: displayETH,
-                  },
-          {
-                    label: "Binance Coin",
-                    fill: false,
-                    lineTension: 2,
-                    backgroundColor: 'green',
-                    borderColor: 'green',
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJointStyle: 'miter',
-                    pointBorderColor: 'orange',
-                    pointBackgroundColor: 'green',
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: 'pink',
-                    pointHoverBorderColor: 'white',
-                    pointHoverWidth: '2',
-                    pointRadius: '1',
-                    pointHitRadius: '6',
-                    data: displayBNB,
-                  },
-        ]
-      }
-    })
+    // const Bitcoin = new Chart(CHART_BTC, {
+    //   type: 'line',
+    //   data: {
+    //     labels: displayPoints,
+    //     datasets: [
+    //       {
+    //         label: "Bitcoin",
+    //         fill: false,
+    //         lineTension: 0.5,
+    //         backgroundColor: 'yellow',
+    //         borderColor: 'yellow',
+    //         borderCapStyle: 'butt',
+    //         borderDash: [],
+    //         borderDashOffset: 0.0,
+    //         borderJointStyle: 'miter',
+    //         pointBorderColor: 'orange',
+    //         pointBackgroundColor: 'yellow',
+    //         pointBorderWidth: 1,
+    //         pointHoverRadius: 5,
+    //         pointHoverBackgroundColor: 'pink',
+    //         pointHoverBorderColor: 'white',
+    //         pointHoverWidth: '2',
+    //         pointRadius: '1',
+    //         pointHitRadius: '6',
+    //         data: displayBTC,
+    //       },
+    //       {
+    //                 label: "Ethereum",
+    //                 fill: false,
+    //                 lineTension: 1,
+    //                 backgroundColor: 'purple',
+    //                 borderColor: 'purple',
+    //                 borderCapStyle: 'butt',
+    //                 borderDash: [],
+    //                 borderDashOffset: 0.0,
+    //                 borderJointStyle: 'miter',
+    //                 pointBorderColor: 'orange',
+    //                 pointBackgroundColor: 'purple',
+    //                 pointBorderWidth: 1,
+    //                 pointHoverRadius: 5,
+    //                 pointHoverBackgroundColor: 'pink',
+    //                 pointHoverBorderColor: 'white',
+    //                 pointHoverWidth: '2',
+    //                 pointRadius: '1',
+    //                 pointHitRadius: '6',
+    //                 data: displayETH,
+    //               },
+    //       {
+    //                 label: "Binance Coin",
+    //                 fill: false,
+    //                 lineTension: 2,
+    //                 backgroundColor: 'green',
+    //                 borderColor: 'green',
+    //                 borderCapStyle: 'butt',
+    //                 borderDash: [],
+    //                 borderDashOffset: 0.0,
+    //                 borderJointStyle: 'miter',
+    //                 pointBorderColor: 'orange',
+    //                 pointBackgroundColor: 'green',
+    //                 pointBorderWidth: 1,
+    //                 pointHoverRadius: 5,
+    //                 pointHoverBackgroundColor: 'pink',
+    //                 pointHoverBorderColor: 'white',
+    //                 pointHoverWidth: '2',
+    //                 pointRadius: '1',
+    //                 pointHitRadius: '6',
+    //                 data: displayBNB,
+    //               },
+    //     ]
+    //   }
+    // })
 
 //     if(displayBTC !== []){
 //     useEffect( async ()=>{
@@ -135,35 +135,35 @@ export default function PricesGraph(props) {
     // })
 
 
-    // const BinanceCoin = new Chart(CHART_BNB, {
-    //   type: 'line',
-    //   data: {
-    //     labels: displayPoints,
-    //     datasets: [
-    //       {
-    //         label: "Binance Coin",
-    //         fill: false,
-    //         lineTension: 2,
-    //         backgroundColor: 'aqua',
-    //         borderColor: 'aqua',
-    //         borderCapStyle: 'butt',
-    //         borderDash: [],
-    //         borderDashOffset: 0.0,
-    //         borderJointStyle: 'miter',
-    //         pointBorderColor: 'red',
-    //         pointBackgroundColor: 'aqua',
-    //         pointBorderWidth: 1,
-    //         pointHoverRadius: 5,
-    //         pointHoverBackgroundColor: 'pink',
-    //         pointHoverBorderColor: 'white',
-    //         pointHoverWidth: '2',
-    //         pointRadius: '1',
-    //         pointHitRadius: '10',
-    //         data: displayBNB,
-    //       },
-    //     ]
-    //   }
-    // })
+    const BITCOIN = new Chart(CHART_BTC, {
+      type: 'line',
+      data: {
+        labels: displayPoints,
+        datasets: [
+          {
+            label: "Bitcoin",
+            fill: false,
+            lineTension: 0.8,
+            backgroundColor: 'aqua',
+            borderColor: 'aqua',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJointStyle: 'round',
+            pointBorderColor: 'red',
+            pointBackgroundColor: 'aqua',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'pink',
+            pointHoverBorderColor: 'white',
+            pointHoverWidth: '2',
+            pointRadius: '1',
+            pointHitRadius: '10',
+            data: displayBTC,
+          },
+        ]
+      }
+    })
 
 
 
@@ -233,6 +233,7 @@ export default function PricesGraph(props) {
     return (
         <div>
           <div className="graphBoxy"><canvas id="myChart1"></canvas></div> 
+          {/* <div className="graphBoxy"><canvas id="myChart2"></canvas></div>  */}
         </div>
     ) 
       // <RenderGraphs displayPoints={displayPoints} displayETH={displayETH} displayBNB={displayBNB} />

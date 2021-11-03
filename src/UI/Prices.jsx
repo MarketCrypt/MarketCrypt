@@ -8,7 +8,7 @@ function Prices() {
         console.log('inside useEffect')
         fetchPrices();
         function fetchPrices(){
-        fetch('http://localhost:3000/getPrices',{
+        fetch('http://localhost:3000/api/graphData',{
             method: "GET",
             mode: "cors",
             headers: {
