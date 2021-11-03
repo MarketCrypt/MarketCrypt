@@ -1,8 +1,8 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const PORT = 3000;
-const CryptoController = require('./CryptoController');
+const apiRouter = require('./apiRouter');
+export const PORT = 3000;
 
 
 ///"start": "NODE_ENV=production node server/server.js",
@@ -16,13 +16,19 @@ app.use(function(req, res, next) {
   next();
 });
 
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`listening on port: ${PORT}`);
+  });
+}
+  
+  
+
 // serve index.html on the route '/'
+app.use('/api', apiRouter);
+
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
-});
-
-app.options('/getData', (req, res) => {
-  return res.status(200).send('ok')
 });
 
 app.options('/getPrices', (req, res) => {
@@ -265,36 +271,29 @@ app.get('/getData', (req, res) => {
         quote: [Object]
       }
     ]
-  };
-  return res.status(200).send(res.locals.cryptoData);
+}
 });
 
+module.exports = app;
 
 ///////////////// ERROR HANDLERS
-
-
 app.use("*", (req, res) => {
-    return res.status(404).send("Error, path not found");
-  });
-  
+  return res.status(404).send("Error, path not found");
+});
 
-  app.use((err, req, res, next) => {
-    const errorObj = {
-      log: "global error handler in express app",
-      message: { err: "global error handler in express app" },
-    };
-    const errorObject = Object.assign({}, errorObj, err);
-    console.log(errorObject);
-    return res.status(500).json(errorObject);
-  });
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: "Express error handler caught unknown middleware error",
+    status: 500,
+    message: { err: "An error occurred" },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+  
   
 /////////////////
-  
-  if (process.env.NODE_ENV !== 'test') {
-    app.listen(PORT, () => {
-      console.log(`listening on port: ${PORT}`);
-    });
-  }
-  
-module.exports = app;
-  
+
+
+
+
